@@ -11,7 +11,6 @@ class Quad {
 	double width, heigth;
 	double angle_from_beginning;
 	int last_move;
-	bool l_lock = false, r_lock = false, u_lock = false, d_lock = false;
 public:
 	Quad() {
 		posX = posY = 0;
@@ -84,19 +83,15 @@ public:
 			RotateRight();
 		else if (key == GLFW_KEY_W) {
 			MoveUp();
-			d_lock = false;
 		}
 		else if (key == GLFW_KEY_S) {
 			MoveDown();
-			u_lock = false;
 		}
 		else if (key == GLFW_KEY_A) {
 			MoveLeft();
-			r_lock = false;
 		}
 		else if (key == GLFW_KEY_D) {
 			MoveRight();
-			l_lock = false;
 		}
 		last_move = key;
 	}
@@ -107,20 +102,12 @@ public:
 		else if (last_move == GLFW_KEY_E)
 			RotateLeft();
 		else if (last_move == GLFW_KEY_W)
-			if (u_lock)
 				MoveDown();
-			else u_lock = true;
 		else if (last_move == GLFW_KEY_S)
-			if (d_lock)
 				MoveUp();
-			else d_lock = true;
 		else if (last_move == GLFW_KEY_A)
-			if (l_lock)
 				MoveRight();
-			else l_lock = true;
 		else if (last_move == GLFW_KEY_D)
-			if (r_lock)
 				MoveLeft();
-			else r_lock = true;
 	}
 };
